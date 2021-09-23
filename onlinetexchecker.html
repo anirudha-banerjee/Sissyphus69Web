@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+   <head>
+      <title>Online Tex Checker</title>
+
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+      <!-- Provide list of keywords -->
+      <meta name = "keywords" content = "tex, latex, katex">
+
+      <!-- Provide description of the page -->
+      <meta name = "description" content = "Latex Support Checker For Katex">
+
+      <!-- Author information -->
+      <meta name = "author" content = "godslayer69">
+
+      <!-- Page content type -->
+      <meta http-equiv = "content-type" content = "text/html; charset = UTF-8">
+
+      <!-- Tag to tell robots not to index the content of a page -->
+      <meta name = "robots" content = "noindex, nofollow">
+
+      <!-- Link  To Katex Files -->
+      <link rel="stylesheet" type="text/css" href="assets/katex/katex.min.css">
+      <script type="text/javascript" src="assets/katex/katex.min.js"></script>
+      <script type="text/javascript" src="assets/katex/contrib/auto-render.min.js"></script>
+      <style type='text/css'>
+      body {margin: 0px;padding: 20px;font-size:18px;color:#000000; }
+      button {
+        padding: 15px 25px;
+        font-size: 16px;
+        text-align: center;
+        cursor: pointer;
+        outline: none;
+        color: #fff;
+        backgound-color: #F05A2A;
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 9px #999;
+      }
+
+      button:active {
+        background-color: #F05A2A;
+        box-shadow: 0 5px #666;
+        transform: translateY(4px);
+      }
+
+      input{
+        background-color:white;
+        border: solid 1px #000000;
+        border-radius: 4px;
+        padding: 4px;
+        font-size: 18px;
+        color: #000000;
+      }
+      </style>
+
+   </head>
+
+   <body>
+     <h3>Check Formulae Supported By Katex Library</h3>
+
+         Input Formulae/Symbols:
+            <input type = "text" id="tex_input"/>
+            <br />
+            <br />
+            <button type = "submit" id="submit_btn">Submit</button>
+            <br />
+            <p>................................</p>
+
+         Output:
+      <br />
+      <h5>Rendered Formula:</h5>
+      <p><span id="mykatex1">Latex Conversion</span></p>
+      <script>
+      </script>
+        <p>................................</p>
+
+        <div id="katexerror" style="color:#D32F2F;">
+
+        </div>
+        <br />
+      <p><h5>Below Are Links To Katex Libraries And Support Documents</h5></p>
+      <a href = "https://khan.github.io/KaTeX/" target = "_blank">Katex</a> |
+      <a href = "https://github.com/Khan/KaTeX" target = "_blank">Katex Github</a> |
+      <a href = "https://khan.github.io/KaTeX/function-support.html" target = "_blank">Katex Function Support</a> |
+        <a href = "http://tiddlywiki.com/plugins/tiddlywiki/katex/" target = "_blank">Katex Demo</a>
+        <br />
+        <br />
+
+          <script>
+          try {
+            var textInput = document.getElementById('tex_input');
+            var submitBtn = document.getElementById('submit_btn');
+            submitBtn.addEventListener('click', renderFormula);
+            textInput.addEventListener("keyup", function(event) {
+              event.preventDefault();
+              // Number 13 is the "Enter" key on the keyboard
+              if (event.keyCode == 13) {
+                // Trigger the button element with a click
+                submitBtn.click();
+              }
+            });
+            function renderFormula() {
+              try {
+                katex.render(textInput.value, mykatex1);
+                document.getElementById("katexerror").innerHTML = "";
+              } catch (e) {
+                document.getElementById("katexerror").innerHTML = e.message;
+              }
+              }
+
+          } catch (e) {
+            document.getElementById("katexerror").innerHTML = "HTML ERROR: " + e.message;
+          }
+          </script>
+   </body>
+
+</html>

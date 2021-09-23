@@ -1,0 +1,12 @@
+[ignore]
+<PROJECT_ROOT>/build
+
+[include]
+
+[libs]
+flow-typed
+./node_modules/stylelint/decls
+
+[lints]
+
+[options]

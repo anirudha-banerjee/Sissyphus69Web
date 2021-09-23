@@ -1,0 +1,292 @@
+# List of test cases for which we create screenshots and other documents.
+# Each value in the top level dictionary is either a string or a dict
+# which may contain the following keys:
+# - tex: the KaTeX input string
+# - pre: some HTML to insert before the KaTeX content
+# - post: some HTML to insert after the KaTeX content
+# - display: set this to 1 in order to use display style
+#
+# Note that YAML will treat a value starting in { as a flow mapping.
+# To avoid that, either enclose the value in '…' or use a block scalar style,
+# writing | (or >) as the first symbol of the value and then continuing
+# on the next line. See http://www.yaml.org/ for syntax details.
+
+Accents: \vec{A}\vec{x}\vec x^2\vec{x}_2^2\vec{A}^2\vec{xA}^2
+AccentsText: |
+    \begin{array}{l}
+    \text{\H{e}}\\
+    \text{\H{X}}\\
+    \end{array}
+Aligned: |
+    \begin{aligned}
+        a &= 1 & b &= 2 \\
+        3a &= 3 & 17b &= 34
+    \end{aligned}
+Arrays: |
+    \left(\begin{array}{|rl|c||}
+        1&2&3\\
+        1+1&2+1&3+1\cr1\over2&\scriptstyle 1/2&\frac12\\[1ex]
+        \begin{pmatrix}x\\y\end{pmatrix}&0&\begin{vmatrix}a&b\\c&d\end{vmatrix}
+    \end{array}\right]
+ArrayMode:
+    tex: |
+        \begin{matrix}
+            \frac{\partial^2 f}{\partial x_1^2} & \frac{\partial^2 f}{\partial x_1\,\partial x_2} & \cdots & \frac{\partial^2 f}{\partial x_1\,\partial x_n} \\
+            \frac{\partial^2 f}{\partial x_2\,\partial x_1} & \frac{\partial^2 f}{\partial x_2^2} & \cdots & \frac{\partial^2 f}{\partial x_2\,\partial x_n} \\
+            \vdots & \vdots & \ddots & \vdots \\
+            \frac{\partial^2 f}{\partial x_n\,\partial x_1} & \frac{\partial^2 f}{\partial x_n\,\partial x_2} & \cdots & \frac{\partial^2 f}{\partial x_n^2}
+        \end{matrix}
+    display: 1
+ArrayType: 1\begin{array}{c}2\\3\end{array}4
+ArrayRemoveEmptyLine: |
+    \begin{pmatrix}
+        1 \\
+        2 \\
+    \end{pmatrix}
+Baseline: a+b-c\cdot d/e
+BasicTest: a
+BinCancellation: |
+    \begin{array}{cccc}
+        +1 & 1+ & 1+1 & (,) \\
+        1++1 & 3\times) & 1+, & \left(,\right)
+    \end{array}
+BinomTest: \dbinom{a}{b}\tbinom{a}{b}^{\binom{a}{b}+17}
+BoldSpacing: \mathbf{A}^2+\mathbf{B}_3*\mathscr{C}'
+Boxed: \boxed{F=ma} \quad \boxed{ac}\color{magenta}{\boxed{F}}\boxed{F=mg}
+Cases: |
+    f(a,b)=\begin{cases}
+        a+1&\text{if }b\text{ is odd} \\
+        a&\text{if }b=0 \\
+        a-1&\text{otherwise}
+    \end{cases}
+Colors:
+    tex: \blue{a}\textcolor{#0f0}{b}\textcolor{red}{c}
+    nolatex: different syntax and different scope
+ColorImplicit: bl{ack\color{red}red\textcolor{green}{green}red\color{blue}blue}black
+ColorSpacing: \textcolor{red}{\displaystyle \int x} + 1
+Colorbox:  a \colorbox{teal} B \fcolorbox{blue}{red}{C} e+\colorbox{teal}x
+DashesAndQuotes: \text{``a'' b---c -- d----`e'-{-}-f}--``x''
+DeepFontSizing:
+    tex: |
+        a^{\big| x^{\big(}}_{\Big\uparrow} +
+        i^{i^{\Huge x}_y}_{\Huge z} +
+        \dfrac{\Huge x}{y}
+    nolatex: \Huge inside \dfrac doesn't work, needs an extra {…}
+DelimiterSizing: |
+    \bigl\uparrow\Bigl\downarrow\biggl\updownarrow
+    \Biggl\Uparrow\Biggr\Downarrow\biggr\langle\Bigr\}\bigr\rfloor
+DisplayMode:
+    tex: \sum_{i=0}^\infty \frac{1}{i}
+    pre: pre
+    post: post
+    display: 1
+DisplayStyle: |
+    {\displaystyle\sqrt{x}}{\sqrt{x}}
+    {\displaystyle \frac12}{\frac12}{\displaystyle x^1_2}{x^1_2}
+Dots: |
+    \begin{array}{l}
+      \cdots;\dots+\dots\int\dots,\dots \\
+      \cdots{};\ldots+\ldots\int\ldots,\ldots
+    \end{array}
+Exponents: a^{a^a_a}_{a^a_a}
+ExtensibleArrows: |
+    \begin{array}{l}
+        \xrightarrow[ab]{ABC} + \xRightarrow{ABC} \\
+        \xrightleftharpoons[ab]{ABC} + \xhookrightarrow[ab]{ABC} \\
+        \xtwoheadrightarrow{ABC} + \frac{\xrightarrow[ab]{ABC}}{\xrightarrow[ab]{ABC}} + \left\lvert\xrightarrow[ab]{ABC}\right\rvert
+    \end{array}
+FractionTest: \dfrac{a}{b}\frac{a}{b}\tfrac{a}{b}\;-\dfrac12\;1\tfrac12\;{1 \atop 2}
+Functions: \sin\cos\tan\ln\log
+Gathered: |
+    \begin{gathered}
+      x = \frac{1}{2} \\
+      y = \sum_{i=1}^n i
+    \end{gathered} \approx
+    \begin{array}{c}
+      x = \frac{1}{2} \\
+      y = \sum_{i=1}^n i
+    \end{array}
+GreekLetters: \alpha\beta\gamma\omega
+GreekUnicode: \frac{αβγδεϵζηθϑικλμνξοπϖρϱςστυφϕχψω}{ΓΔΘΞΠΣΦΨΩ\mathbf{Ω}\mathbf{\Omega}}
+GroupMacros:
+    macros:
+        \startExp: e^\bgroup
+        \endExp: \egroup
+    tex: \startExp a+b\endExp
+HorizontalBraces: \overbrace{\displaystyle{\oint_S{\vec E\cdot\hat n\,\mathrm d a}}}^\text{emf} = \underbrace{\frac{q_{\text{enc}}}{\varepsilon_0}}_{\text{charge}}
+KaTeX: \KaTeX
+Kern:
+    tex: \frac{a\kern{1em}b}{c}a\kern{1em}b\kern{1ex}c\kern{-0.25em}d
+    nolatex: LaTeX fails to typeset this, “Missing number, treated as zero.”
+Lap: ab\mathllap{f}cd\mathrlap{g}hij\mathclap{k}lm \; ab\llap{f}cd\rlap{g}hij\clap{k}lm
+LargeRuleNumerator: \frac{\textcolor{blue}{\rule{1em}{2em}}}{x}
+LeftRight: \left( x^2 \right) \left\{ x^{x^{x^{x^x}}} \right.
+LeftRightListStyling: a+\left(x+y\right)-x
+LeftRightMiddle: \left( x^2 \middle/ \right) \left\{ x^{x^{x^{x^x}}} \middle/ y \right.\left(x\middle|y\,\middle|\,z\right)
+LeftRightStyleSizing: |
+    +\left\{\rule{0.1em}{1em}\right.
+    x^{+\left\{\rule{0.1em}{1em}\right.
+    x^{+\left\{\rule{0.1em}{1em}\right.}}
+LimitControls: |
+    \displaystyle\int\limits_2^3 3x^2\,dx + \sum\nolimits^n_{i=1}i +
+    \textstyle\int\limits_x^y z
+LowerAccent: |
+    \begin{matrix}
+        \underleftarrow{AB} \quad \underrightarrow{AB} \quad \underleftrightarrow{AB} \quad \undergroup{AB} \\
+        \underlinesegment{AB} \quad \undertilde{AB}  \quad \color{green}{\underrightarrow{AB}} \\
+        \underrightarrow{F} + \underrightarrow{AB} + \underrightarrow{AB}^2 + \underrightarrow{AB}_2 \\
+        \frac{\underrightarrow{AB}}{\underrightarrow{AB}} + \sqrt{\underrightarrow{AB}} + \left\lvert\underrightarrow{AB}\right\rvert
+    \end{matrix}
+MathAtom: a\mathrel{\mathop{=}\limits^{\blue ?}}b
+MathAtom2: \mathop{\overline{\mathrm{lim}}}\limits_{x\to\infty}f(x)
+MathDefaultFonts: Ax2k\breve{a}\omega\Omega\imath+\KaTeX
+MathBb: \mathbb{Ax2k\breve{a}\omega\Omega\imath+\KaTeX}
+MathBf: \mathbf{Ax2k\breve{a}\omega\Omega\imath+\KaTeX}
+MathCal: \mathcal{Ax2k\breve{a}\omega\Omega\imath+\KaTeX}
+MathFrak: \mathfrak{Ax2k\breve{a}\omega\Omega\imath+\KaTeX}
+MathIt: \mathit{Ax2k\breve{a}\omega\Omega\imath+\KaTeX}
+MathOp: a\mathop+b\mathop:c\mathop{\delta}e\mathop{\textrm{and}}f\mathrel{\mathop{:}}=g\sin h
+MathRm: \mathrm{Ax2k\breve{a}\omega\Omega\imath+\KaTeX}
+MathSf: \mathsf{Ax2k\breve{a}\omega\Omega\imath+\KaTeX}
+MathScr: \mathscr{Ax2k\breve{a}\omega\Omega\imath+\KaTeX}
+MathTt: \mathtt{Ax2k\breve{a}\omega\Omega\imath+\KaTeX}
+Mod: |
+    \begin{array}{cc}
+        a \bmod 2 & b \pod 3 \\
+        c \pmod{4} & d \mod{56} \\
+        \displaystyle a\bmod 2 & \displaystyle b \pod 3 \\
+        \displaystyle c\pmod{4} & \displaystyle d \mod{56}
+    \end{array}
+ModScript: |
+    \begin{array}{cc}
+        \scriptstyle a\bmod 2 & \scriptstyle b \pod 3 \\
+        \scriptstyle c\pmod{4} & \scriptstyle d \mod{56}
+    \end{array}
+NegativeSpaceBetweenRel: A =\!= B
+NestedFractions: |
+    \dfrac{\frac{a}{b}}{\frac{c}{d}}\dfrac{\dfrac{a}{b}}
+    {\dfrac{c}{d}}\frac{\frac{a}{b}}{\frac{c}{d}}
+Not: |
+    \begin{array}{l}
+        \not=\not>\not\geq\not\in\not<\not\leq\not{abc} \\
+        \not xy + ab \not xy
+    \end{array}
+NullDelimiterInteraction: a \bigl. + 2 \quad \left. + a \right)
+OldFont: |
+    \begin{matrix}
+      \rm rm & it & \it it & \bf bf & \sf sf & \tt tt \\
+      \text{\rm rm} & \text{rm} & \text{\it it} & \text{\bf bf} & \text{\sf sf} & \text{\tt tt} \\
+      i\rm r\it i & \text{r\it i\rm r}
+    \end{matrix}
+OperatorName: |
+    \begin{matrix}
+        \operatorname g (z) + 5\operatorname{g}z + \operatorname{Gam-ma}(z) \\
+        \operatorname{Gam ma}(z) + \operatorname{\Gamma}(z) + \operatorname{}x
+    \end{matrix}
+OpLimits: |
+    {\sin_2^2 \lim_2^2 \int_2^2 \sum_2^2}
+    {\displaystyle \lim_2^2 \int_2^2 \intop_2^2 \sum_2^2}
+OverUnderline: x\underline{x}\underline{\underline{x}}\underline{x_{x_{x_x}}}\underline{x^{x^{x^x}}}\overline{x}\overline{x}\overline{x^{x^{x^x}}} \blue{\overline{\underline{x}}\underline{\overline{x}}}
+OverUnderset: |
+    \begin{array}{l}
+    x\overset?=1\\
+    {\displaystyle\lim_{t\underset{>0}\to0}}\\
+    a+b+c+d\overset{b+c=0}\longrightarrow a+d\\
+    \overset { x = y } { \sqrt { a b } }
+    \end{array}
+Phantom: \dfrac{1+\phantom{x^{\blue{2}}} = x}{1+x^{\blue{2}} = x} \left(\vphantom{\int_t} zzz \right) \left( X \hphantom{\frac{\frac X X}{X}} \right)
+PrimeSpacing: f'+f_2'+f^{f'}
+PrimeSuper: x'^2+x'''^2+x'^2_3+x_3'^2
+Raisebox: \frac{a}{a\raisebox{0.5em}{b}} \cdot \frac{a\raisebox{-0.5em}{b}}{a} \cdot \sqrt{a\raisebox{0.5em}{b}} \cdot \sqrt{a\raisebox{-0.5em}{b}} \cdot \sqrt{a\raisebox{0.5em}{b}\raisebox{-0.5em}{b}}
+RelativeUnits: |
+    \begin{array}{ll}
+        a\kern1emb^{a\kern1emb^{a\kern1emb}} &
+        {\footnotesize a\kern1emb^{a\kern1emb^{a\kern1emb}}} \\
+        a\mkern18mub^{a\mkern18mub^{a\mkern18mub}} &
+        {\footnotesize a\mkern18mub^{a\mkern18mub^{a\mkern18mub}}} \\
+        \rule{1em}{1em}^{\rule{1em}{1em}}\rule{18mu}{18mu}^{\rule{18mu}{18mu}} &
+        {\footnotesize\rule{1em}{1em}^{\rule{1em}{1em}}\rule{18mu}{18mu}^{\rule{18mu}{18mu}}}
+    \end{array}
+RlapBug: \frac{\mathrlap{x}}{2}
+Rule: \rule{1em}{0.5em}\rule{1ex}{2ex}\rule{1em}{1ex}\rule{1em}{0.431ex}
+SizingBaseline:
+    tex: '{\tiny a+b}a+b{\Huge a+b}'
+    pre: x
+    post: M
+Sizing: |
+    {\Huge x}{\LARGE y}{\normalsize z}{\scriptsize w}\sqrt[\small 3]{x+1}
+Smash: \left( X^{\smash 2} \right) \sqrt{\smash[b]{y}}
+Spacing: ^3+[-1][1-1]1=1(=1)\lvert a\rvert~b
+Sqrt: |
+    \sqrt{\sqrt{\sqrt{x}}}_{\sqrt{\sqrt{x}}}^{\sqrt{\sqrt{\sqrt{x}}}
+    ^{\sqrt{\sqrt{\sqrt{x}}}}}
+SqrtRoot: |
+    1+\sqrt[3]{2}+\sqrt[1923^234]{2^{2^{2^{2^{2^{2^{2^{2^{2^{2^{2^2}}}}}}}}}}}
+StackRel: a \stackrel{?}{=} b \stackrel{\text{def}}{=} c
+StretchyAccent: |
+    \begin{array}{l}
+        \overrightarrow{AB} \quad \overleftarrow{AB} \quad \Overrightarrow{AB} \quad \overleftrightarrow{AB} \quad \overgroup{AB} \\
+        \overlinesegment{AB} \quad \overleftharpoon{AB} \quad \overrightharpoon{AB} \quad \color{red}{\overrightarrow{AB}} \quad \widehat{\theta} \widetilde{A} \\
+        \widehat{AB} \quad \widehat{ABC} \quad \widetilde{AB} \quad \widetilde{ABC} \\
+        \overrightarrow{F} + \overrightarrow{AB} + \overrightarrow{F}^2 + \overrightarrow{F}_2 + \overrightarrow{F}_1^2 \\
+        \overrightarrow{AB}^2+\frac{\overrightarrow{AB}}{\overrightarrow{AB}} + \sqrt{\overrightarrow{AB}} + \left\lvert\overrightarrow{AB}\right\rvert
+    \end{array}
+StretchyAccentColor: |
+    \red{\overrightarrow{AB}} \quad \color{blue}{\overleftarrow{AB}} \quad \color{blue}{\green{\Overrightarrow{AB}}}
+StrikeThrough: |
+    \begin{array}{l}
+        \cancel x \quad \cancel{2B} + \bcancel 5 +\bcancel{5ay} \\
+        \sout{5ab} + \sout{5ABC} + \xcancel{\oint_S{\vec E\cdot\hat n\,\mathrm d a}} \\
+        \frac{x+\cancel B}{x+\cancel x} + \frac{x+\cancel y}{x} + \cancel{B}_1^2 + \cancel{B^2} \\
+        \left\lvert\cancel{ac}\right\rvert
+    \end{array}
+StrikeThroughColor: |
+    \begin{array}{l}
+        \red{\cancel x \quad \cancel{2B} + \bcancel 5 +\bcancel{5ay}} \\
+        \color{green}{\sout{5ab} + \sout{5ABC} + \xcancel{\oint_S{\vec E\cdot\hat n\,\mathrm d a}}}
+    \end{array}
+StyleSpacing: \scriptstyle ab\;cd
+StyleSwitching: a\cdot b\scriptstyle a\cdot ba\textstyle\cdot ba\scriptstyle\cdot b
+SupSubCharacterBox: a_2f_2{f}_2{aa}_2{af}_2\mathbf{y}_Ay_A
+SupSubHorizSpacing: |
+    x^{x^{x}}\Big|x_{x_{x_{x_{x}}}}\bigg|x^{x^{x_{x_{x_{x_{x}}}}}}\bigg|
+SupSubLeftAlignReset: |
+    \omega^8_{888} \quad \frac{1}{\hat{\omega}^{8}_{888}} \quad \displaystyle\sum_{\omega^{8}_{888}}
+SupSubOffsets: \displaystyle \int_{2+3}x f^{2+3}+3\lim_{2+3+4+5}f
+Symbols1: |
+    \maltese\degree\pounds\$
+    \text{\maltese\degree\pounds\textdollar}
+Text: \frac{a}{b}\text{c~ {ab} \ e}+fg
+TextWithMath: \text{for $a < b$ and $ c < d $}.
+Unicode: \begin{matrix}\text{ÀàÇçÉéÏïÖöÛû} \\ \text{БГДЖЗЙЛФЦШЫЮЯ} \\ \text{여보세요} \\ \text{私はバナナです} \end{matrix}
+Units: |
+    \begin{array}{ll}
+      \mathrm H\kern 1em\mathrm H \text{\tiny (1em)}
+      & \mathrm H\kern 1ex\mathrm H \text{\tiny (1ex)} \\
+      \mathrm H{\scriptstyle \kern 1em}\mathrm H \text{\tiny (ss 1em)}
+      & \mathrm H{\scriptstyle \kern 1ex}\mathrm H \text{\tiny (ss 1ex)} \\
+      \mathrm H{\small \kern 1em}\mathrm H \text{\tiny (sm 1em)}
+      & \mathrm H{\small \kern 1ex}\mathrm H \text{\tiny (sm 1ex)} \\
+      \mathrm H\mkern 18mu\mathrm H \text{\tiny (18mu)}
+      & \mathrm H\kern 1cm\mathrm H \text{\tiny (1cm)} \\
+      \mathrm H{\scriptstyle \mkern 18mu}\mathrm H \text{\tiny (ss 18mu)}
+      & \mathrm H{\scriptstyle \kern 1cm}\mathrm H \text{\tiny (ss 1cm)} \\
+      \mathrm H{\small \mkern 18mu}\mathrm H \text{\tiny (sm 18mu)}
+      & \mathrm H{\small \kern 1cm}\mathrm H \text{\tiny (sm 1cm)}
+    \end{array}
+UnsupportedCmds:
+    tex: \err\,\frac\fracerr3\,2^\superr_\suberr\,\sqrt\sqrterr
+    noThrow: 1
+    errorColor: "#dd4c4c"
+    nolatex: deliberately does not compile
+Verb: |
+    \begin{array}{ll}
+      \verb \verb ,   & \verb|\verb  |, \\
+      \verb* \verb* , & \verb*|\verb* |, \\
+      \verb!<x> & </y>! & \scriptstyle\verb|ss verb| \\
+      \verb*!<x> & </y>! & \small\verb|sm verb| \\
+    \end{array}
+VerticalSpacing:
+    pre: potato<br>blah
+    tex: x^{\Huge y}z
+    post: <br>moo
