@@ -11,46 +11,49 @@
 
   <!-- Disable tap highlight on IE -->
   <meta name="msapplication-tap-highlight" content="no">
-  
+
   <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-icon-180x180.png">
   <link href="./assets/favicon.ico" rel="icon">
 
-  <title>World of Sissyphus</title>  
+  <title>World of Sissyphus</title>
 
-<link href="./css/css/main.3f6952e4.css" rel="stylesheet"></head>
+  <link href="./css/main.3f6952e4.css" rel="stylesheet">
+</head>
 
 <body class="minimal">
-<div id="site-border-left"></div>
-<div id="site-border-right"></div>
-<div id="site-border-top"></div>
-<div id="site-border-bottom"></div>
-<!-- Add your content of header -->
-<header>
-  <nav class="navbar  navbar-fixed-top navbar-inverse">
-    <div class="container">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+  <div id="site-border-left"></div>
+  <div id="site-border-right"></div>
+  <div id="site-border-top"></div>
+  <div id="site-border-bottom"></div>
+  <!-- Add your content of header -->
+  <header>
+    <nav class="navbar  navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse"
+          aria-expanded="false">
           <span class="sr-only">Toggle navigation</span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
 
-      <div class="collapse navbar-collapse" id="navbar-collapse">
-        <ul class="nav navbar-nav ">
-          <li><a href="./index.html" title="">01 : Home</a></li>
-          <li><a href="./works.html" title="">02 : Works</a></li>
-          <li><a href="./about.html" title="">03 : About me</a></li>
-          <li><a href="./contact.html" title="">04 : Contact</a></li>
-          <li><a href="./blogs.html" title="">05 : Blabberings</a></li>
-        </ul>
+        <div class="collapse navbar-collapse" id="navbar-collapse">
+          <ul class="nav navbar-nav ">
+            <li><a href="./index.html" title="">01 : Home</a></li>
+            <li><a href="./works.html" title="">02 : Works</a></li>
+            <li><a href="./about.html" title="">03 : About me</a></li>
+            <li><a href="./contact.html" title="">04 : Contact</a></li>
+            <li><a href="./blogs.html" title="">05 : Blabberings</a></li>
+          </ul>
 
 
-      </div> 
-    </div>
-  </nav>
-</header>
-<!-- Add your site or app content here -->
-  <div class="hero-full-container background-image-container white-text-container" style="background-image: url('./assets/images/space.jpg')">
+        </div>
+      </div>
+    </nav>
+  </header>
+  <!-- Add your site or app content here -->
+  <div class="hero-full-container background-image-container white-text-container"
+    style="background-image: url('./assets/images/space.jpg')">
     <div class="container">
       <div class="row">
         <div class="col-xs-12">
@@ -72,14 +75,43 @@
     </div>
   </div>
 
+  <script>
+    document.addEventListener("DOMContentLoaded", function (event) {
+      type();
+      movingBackgroundImage();
+    });
+  </script>
+
+  <!-- Start of Async Drift Code -->
 <script>
-  document.addEventListener("DOMContentLoaded", function (event) {
-     type();
-     movingBackgroundImage();
-  });
-</script>
+  "use strict";
+  !function() {
+    var t = window.driftt = window.drift = window.driftt || [];
+    if (!t.init) {
+      if (t.invoked) return void (window.console && console.error && console.error("Drift snippet included twice."));
+      t.invoked = !0, t.methods = [ "identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on" ],
+      t.factory = function(e) {
+        return function() {
+          var n = Array.prototype.slice.call(arguments);
+          return n.unshift(e), t.push(n), t;
+        };
+      }, t.methods.forEach(function(e) {
+        t[e] = t.factory(e);
+      }), t.load = function(t) {
+        var e = 3e5, n = Math.ceil(new Date() / e) * e, o = document.createElement("script");
+        o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "https://js.driftt.com/include/" + n + "/" + t + ".js";
+        var i = document.getElementsByTagName("script")[0];
+        i.parentNode.insertBefore(o, i);
+      };
+    }
+  }();
+  drift.SNIPPET_VERSION = '0.3.1';
+  drift.load('f3nt7nia6de5');
+  </script>
+  <!-- End of Async Drift Code -->
 
 
-<script type="text/javascript" src="./js/js/main.70a66962.js"></script></body>
+  <script type="text/javascript" src="./js/main.70a66962.js"></script>
+</body>
 
 </html>
